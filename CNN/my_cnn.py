@@ -50,22 +50,23 @@ def fit_run_classifier(bs = 32, epochs=10):
                                                 target_size=(img_width, img_height),
                                                 batch_size=bs,
                                                 class_mode='binary')
+
+
+
     classifier = create_classifier(p=0.5, input_shape=(img_width, img_height, 3))
     classifier.fit_generator(training_set,
                             epochs=epochs,
                             validation_data=test_set)
+    return classifier, training_set.class_indices
 
-def main():
-    fit_run_classifier(bs=32, epochs=100)
 
-if __name__ == "__main__":
-    main()
+classifier, classes = fit_run_classifier(bs=32, epochs=100)
 
 # # Save model/clissifier - Uncomment this
 classifier.save('dog-or-cat-v2.h5')
 
 # Import model/classifier
-classifier = load_model('dog-or-cat.h5') 
+#classifier = load_model('dog-or-cat.h5') 
 
 # Making prediction
 import numpy as np
