@@ -52,17 +52,17 @@ def fit_run_classifier(bs = 32, epochs=10):
                                                 class_mode='binary')
     classifier = create_classifier(p=0.5, input_shape=(img_width, img_height, 3))
     classifier.fit_generator(training_set,
-                            epochs=10,
+                            epochs=epochs,
                             validation_data=test_set)
 
 def main():
-    fit_run_classifier(bs=32, epochs=12)
+    fit_run_classifier(bs=32, epochs=100)
 
 if __name__ == "__main__":
     main()
 
 # # Save model/clissifier - Uncomment this
-# classifier.save('dog-or-cat.h5')
+classifier.save('dog-or-cat-v2.h5')
 
 # Import model/classifier
 classifier = load_model('dog-or-cat.h5') 

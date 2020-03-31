@@ -1,3 +1,4 @@
 */dataset
 my_cnn2.py
 *.h5
+*.DS_Store
